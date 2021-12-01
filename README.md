@@ -6,22 +6,14 @@
 [![Discord chat](https://img.shields.io/discord/710177966440579103.svg?label=discord%20chat)](https://discord.gg/WfEp6ut)
 [![Matrix](https://img.shields.io/matrix/quad-general:matrix.org?label=matrix%20chat)](https://matrix.to/#/#quad-general:matrix.org)
 
-Miniquad is safe and cross-platform rendering library focused on portability and low-end platforms support
+Miniquad is a manifestation of a dream in a world where we do not need a deep dependencies tree and thousands LOC to create a visual application on a computer.
 
-API is highly inspired by [sokol-gfx](https://github.com/floooh/sokol) ([sokol overview](https://floooh.github.io/2017/07/29/sokol-gfx-tour.html), [2019 update](https://floooh.github.io/2019/01/12/sokol-apply-pipeline.html)). Implementation influenced by [crayon](https://docs.rs/crayon/0.7.1/crayon/video/index.html).
-
-For context management and input on Windows/Linux(and potentially mobiles) "sokol-app" was used. And no external dependencies for WASM.
-
-For higher level API take a look on:
-
-[good-web-game](https://github.com/not-fl3/good-web-game): implementation of some [ggez](https://github.com/ggez/ggez) subset on top of miniquad, made as compatibility layer to run ggez games on wasm
-
-[macroquad](https://github.com/not-fl3/macroquad): raylib-like library on top of miniquad. [100loc arkanoid with macroquad](https://github.com/not-fl3/macroquad/blob/master/examples/arkanoid.rs)
+Each platform implementation is (almost) one, no dependencies, pure rust file. This makes miniquad incredibly easy to fork or modify. Do not need a graphics abstraction and just want to learn how, say, wayland really works? Copy "linux_wayland.rs" file, strip internal miniquad dependencies(there are fairly few) and you can start hacking your own wayland client.
 
 ## Supported platforms
 
 * Windows, OpenGl 3
-* Linux, OpenGl 3
+* Linux, OpenGl 3. X11 with libGLX or libEGL or Wayland.
 * macOS, OpenGL 3
 * iOS, GLES 3
 * WASM, WebGl1 - tested on ios safari, ff, chrome
@@ -48,9 +40,6 @@ Worth to mention [zemeroth port](https://not-fl3.github.io/miniquad-samples/zeme
 ## linux
 
 ```bash
-# ubuntu system dependencies
-apt install libx11-dev libxi-dev libgl1-mesa-dev
-
 cargo run --example quad
 ```
 
